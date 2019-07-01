@@ -191,18 +191,22 @@
     background: rgba(255,255,255, 1);
     box-shadow: 0 5px 8px 0 rgba(0,0,0,0.2),0 7px 20px 0 rgba(0,0,0,0.17);
 }
+/*
 .close{
     font-size: 40px;
     position:absolute;
     top: 0;
     left: 85%;
     float: right;
-/*    color: #e13a3b;    */
+    color: #e13a3b;    
 }
+*/
+/*
 .close:hover, .close:focus{
     text-decoration: none;
     cursor: pointer;
 }
+*/
 
 }
 .modal-footer{
@@ -234,3 +238,25 @@ form{
     color: #fff;
     font-family: HelveticaNeue,"Helvetica Neue",Helvetica,Arial,sans-serif;
 }
+#aweberSuccess{
+    position: fixed;
+    top: 0;
+    z-index: 1;
+    width: 100%;
+    position: transform 1s ease-in-out;
+    animation: aweberSuccess 5s normal forwards ease-in-out;
+}
+
+@keyframes aweberSuccess{
+    0%{
+        transform: scaleY(0);
+    }15%{
+        transform: scaleY(1);
+    }85%{
+        transform: scaleY(1);
+    }100%{
+        transform: scaleY(0);
+    }
+}
+
+

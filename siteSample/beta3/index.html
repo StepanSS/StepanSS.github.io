@@ -25,8 +25,15 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 
 </head><body>
+    <!-- Section for "Your sign up was successful"-->
+    <div id="aweberSuccess" style="display: none" class="alert alert-dismissible alert-success" >
+      <button id="closeBtnAweberSuccess" type="button" class="close" data-dismiss="alert">&times;</button>
+          <strong>
+              Success!
+          </strong> Your sign up was successful.
+    </div>
 
- <!-- Everything Exit POP -->
+    <!-- Everything Exit POP -->
     <!--Exit intent popup section(Modal section)-->
    
    <div class="bg-modal" id="popModal" style="display: none;">
@@ -55,7 +62,7 @@
                     </div>
                 </div>
                 <!--OPTIN FORM AWEBER-->
-                <form action="http://www.aweber.com/scripts/addlead.pl" method="post" accept-charset="UTF-8">
+                <form id="aweberForm" action="http://www.aweber.com/scripts/addlead.pl" method="post" accept-charset="UTF-8">
                 <div class="row">
                     
                     <div class="col-md-6 email-and-button">
@@ -92,6 +99,8 @@
 
 <!--comment: Full body-->
 <div id="wrapper">
+    <!--   Mouse trigger-->
+    <div id="mouse_trigger" style="height: 1px"></div>
 
    <!-- Settings Panel-->
    <div class="cont" >

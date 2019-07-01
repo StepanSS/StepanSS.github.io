@@ -1,3 +1,14 @@
+// =============SETTINGS=================!!!!!!!!!!!!!
+// to switch on/off cookie - just comment/uncomment next line
+setCookie("modalCookieState", 0, 0); //remove cookie
+//number of days until the cookie should expire
+exdays = 1; 
+//Use line 7 for test and line 8 to send form data to Aweber
+//url = "subscribe.php"; //my test server
+url = $('#aweberForm').attr('action');// Aweber server
+//console.log("url:"+url);
+
+
 // Get modal element
 var modal = document.getElementById('popModal');
 //Get close modal button
@@ -13,16 +24,24 @@ var exitState = exitPopState;
 
 // Function to open modal if cursor leave body
 var modalState = true; //trigger to open modal one time only
-$(document).mouseleave(function () {    
-    if(modalState && exitState){
-      modal.style.display = 'flex';
-        modalState = false;
+
+$(document).mouseleave(openModal);
+
+// Function to open modal
+function openModal() { 
+    if(modalState && exitState && !modalStateInCookie){
+        modal.style.display = 'flex';
+        modalState = false;        
+        setCookie("modalCookieState", "y", exdays)
+        
     }    
-});
+}
 
 // Function to close modal
 function closeModal(){
-   modal.style.display = 'none';
+    modal.style.display = 'none';
+    showAweberSuccess();//for testing only - after need to comment
+    
 }
 
 // Function to close modal if outside click
@@ -57,8 +76,6 @@ $( document ).ready(function() {
           }
         } 
     }
-    
-    
 //    //Switch Popup with delay
 //    if (isMobile) {
 //        if(modalState && exitState){
@@ -70,3 +87,82 @@ $( document ).ready(function() {
 //        }
 //    }
  });
+
+
+//========================Section for Submit Event
+const aweberForm = document.getElementById('aweberForm');
+//formAction = aweberForm.action;
+//console.log(formAction);
+
+aweberForm.addEventListener('submit', (e)=>{
+    e.preventDefault();
+    
+    const request = new XMLHttpRequest();
+    request.open("post", url); 
+    request.onload = function(){
+        console.log(request.responseText);
+    }
+    request.send(new FormData(aweberForm));
+    closeModal();
+    showAweberSuccess(); // show info msg when subscribed
+    
+})
+
+
+//================Functions to close/open Success Info
+aweberSuccess = $('#aweberSuccess')
+//console.log(aweberSuccess);
+function showAweberSuccess(){
+    aweberSuccess.attr("style", "display: block");
+    setTimeout(()=>{
+        aweberSuccess.attr("style", "display: none")
+        }, 5000); //show for 5 sec
+}
+function closeAweberSuccess(){
+    aweberSuccess.attr("style", "display: none") ;
+}
+$('#closeBtnAweberSuccess').on('click', closeAweberSuccess)
+
+
+// ======================= Cookie Section
+modalStateInCookie = getCookie("modalCookieState");
+console.log(modalStateInCookie);
+
+// Create Cookie function
+function setCookie(cname, cvalue, exdays) {
+  var d = new Date();
+  d.setTime(d.getTime() + (exdays*24*60*60*1000));
+  var expires = "expires="+ d.toUTCString();
+  document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+}
+//Get Cookie function
+function getCookie(cname) {
+  var name = cname + "=";
+  var decodedCookie = decodeURIComponent(document.cookie);
+  var ca = decodedCookie.split(';');
+  for(var i = 0; i <ca.length; i++) {
+    var c = ca[i];
+    while (c.charAt(0) == ' ') {
+      c = c.substring(1);
+    }
+    if (c.indexOf(name) == 0) {
+      return c.substring(name.length, c.length);
+    }
+  }
+  return "";
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
