@@ -164,7 +164,7 @@
          
     }
     .modal-content{
-        transform: scale(0.7);
+        transform: scale(0.8);
         overflow-y: auto;
     }
     form{
@@ -173,7 +173,7 @@
     
 }
 .modal-content{
-    transform: scale(0.7);
+/*    transform: scale(0.7);*/
     overflow: visible ;
     z-index: 2;
     max-width: 733px;
@@ -239,10 +239,13 @@ form{
     font-family: HelveticaNeue,"Helvetica Neue",Helvetica,Arial,sans-serif;
 }
 #aweberSuccess{
+    margin: 0 auto;
     position: fixed;
+    left: 0;
+    right: 0;
     top: 0;
     z-index: 1;
-    width: 100%;
+    width: 70%;
     position: transform 1s ease-in-out;
     animation: aweberSuccess 5s normal forwards ease-in-out;
 }
@@ -255,7 +258,7 @@ form{
     }85%{
         transform: scaleY(1);
     }100%{
-        transform: scaleY(0);
+        transform: scaleY(1);
     }
 }
 
