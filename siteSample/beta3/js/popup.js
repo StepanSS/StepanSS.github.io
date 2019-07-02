@@ -1,5 +1,5 @@
 // =============SETTINGS=================!!!!!!!!!!!!!
-// to switch on/off cookie - just comment/uncomment next line
+// to switch on/off cookie - just comment/uncomment next line(line 3)
 setCookie("modalCookieState", 0, 0); //remove cookie
 //number of days until the cookie should expire
 exdays = 1; 

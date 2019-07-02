@@ -136,9 +136,8 @@
          
     }
     .modal-content{
-        margin: 20px
+        margin: 20px;
         max-width: 90%;
-/*        max-height: 100vh;*/
         overflow-y: auto;
     }
     form{
@@ -165,7 +164,7 @@
          
     }
     .modal-content{
-        transform: scale(0.8);
+        transform: scale(0.7);
         overflow-y: auto;
     }
     form{
@@ -174,6 +173,7 @@
     
 }
 .modal-content{
+    transform: scale(0.7);
     overflow: visible ;
     z-index: 2;
     max-width: 733px;
