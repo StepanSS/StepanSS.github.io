@@ -4,9 +4,9 @@ setCookie("modalCookieState", 0, 0); //remove cookie
 //number of days until the cookie should expire
 exdays = 1; 
 //Use line 7 for test and line 8 to send form data to Aweber
-//url = "subscribe.php"; //my test server
+//url = "http://localhost/beta3/subscribe.php"; //my test server
 url = $('#aweberForm').attr('action');// Aweber server
-//console.log("url:"+url);
+console.log("url:"+url);
 
 
 // Get modal element
@@ -40,7 +40,7 @@ function openModal() {
 // Function to close modal
 function closeModal(){
     modal.style.display = 'none';
-    showAweberSuccess();//for testing only - after need to comment
+//    showAweberSuccess();//for testing only - after need to comment
     
 }
 
@@ -89,24 +89,40 @@ $( document ).ready(function() {
  });
 
 
+
+
 //========================Section for Submit Event
-const aweberForm = document.getElementById('aweberForm');
-//formAction = aweberForm.action;
-//console.log(formAction);
+
+const aweberForm = window.document.getElementById('aweberForm');
 
 aweberForm.addEventListener('submit', (e)=>{
     e.preventDefault();
     
-    const request = new XMLHttpRequest();
-    request.open("post", url); 
-    request.onload = function(){
-        console.log(request.responseText);
-    }
-    request.send(new FormData(aweberForm));
+    //get form Data
+    var formData = new FormData(aweberForm);
+    sendDataToIframeForm(formData);
+    iframeForm.submit();
     closeModal();
     showAweberSuccess(); // show info msg when subscribed
     
 })
+
+//get Iframe window
+const myIframe = document.getElementById('iframeAweber');
+var iframeForm = null;
+// get iframe form onload 
+function access(){
+    const iframeDocument = myIframe.contentDocument;
+    //console.log(iframeDocument);
+    try{
+        iframeForm = iframeDocument.querySelector("#aweberIframeForm"); 
+//        console.log(iframeForm);
+    }catch(error){console.error(error);}
+}
+//
+function sendDataToIframeForm(formData){
+    iframeForm.elements['email'].value = formData.get('email');
+}
 
 
 //================Functions to close/open Success Info

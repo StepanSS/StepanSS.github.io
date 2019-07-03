@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Aweber Form for Iframe</title>
+</head>
+<body>
+  
+    <!--  This Iframe sending data to Aweber as background-->
+   <h4>This is iframe window</h4>
+    <form action="http://www.aweber.com/scripts/addlead.pl" id="aweberIframeForm" method="post" >
+       
+       <div class="row">
+                    
+                    <div class="col-md-6 email-and-button">
+                        <div class="text-box">
+                           
+                            <!-- Extra DATA-->
+                           <input type="hidden" name="meta_web_form_id" value="1762873795" />
+                            <input type="hidden" name="meta_split_id" value="" />
+                            <input type="hidden" name="listname" value="awlist5360790" />
+                            <input type="hidden" name="redirect" value="" />
+                            <input type="hidden" name="meta_adtracking" value="" />
+                            <input type="hidden" name="meta_message" value="1" />
+                            <input type="hidden" name="meta_required" value="email" />
+                            <input type="hidden" name="meta_tooltip" value="" />
+                           <!-- END Extra DATA-->
+                           
+                            <input type="email" class='form-control'  required="required" name="email" placeholder="Your Email" value="Your Email Address" onblur="if (this.value == '') {this.value = 'Your Email Address';}" onfocus="if (this.value == 'Your Email Address') {this.value = '';}">
+                        </div>
+                    </div>
+                    <div class="col-md-6 email-and-button">
+                        <button type="submit" class="button btn-primary">
+                            <span><strong>Subscribe and Download</strong></span>
+                        </button>
+                    </div>
+                    
+                </div>
+    </form>
+    
+</body>
+</html>
