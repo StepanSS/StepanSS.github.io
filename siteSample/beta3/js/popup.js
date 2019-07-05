@@ -104,7 +104,7 @@ aweberForm.addEventListener('submit', (e)=>{
     closeModal();
     showAweberSuccess(); // show info msg when subscribed
     console.log(aweberForm);
-    setTimeout(()=>{aweberForm.submit();},3000);
+    setTimeout(()=>{aweberForm.submit();},1000);
     
 //    aweberForm.submit();
     
