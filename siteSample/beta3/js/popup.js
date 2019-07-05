@@ -2,11 +2,13 @@
 // to switch on/off cookie - just comment/uncomment next line(line 3)
 setCookie("modalCookieState", 0, 0); //remove cookie
 //number of days until the cookie should expire
-exdays = 1; 
+exdays = 1;
+
+
 //Use line 7 for test and line 8 to send form data to Aweber
-//url = "http://localhost/beta3/subscribe.php"; //my test server
-url = $('#aweberForm').attr('action');// Aweber server
-console.log("url:"+url);
+//url = "http://localhost/beta3/subscribe.php"; //test server
+//url = $('#aweberForm').attr('action');// Aweber server
+//console.log("url:"+url);
 
 
 // Get modal element
@@ -89,21 +91,22 @@ $( document ).ready(function() {
  });
 
 
-
-
-//========================Section for Submit Event
-
-const aweberForm = window.document.getElementById('aweberForm');
+//========================Section for Submit Event============!!!!!!!!!!!!
+//to return normal form behavior comment this section
+//===============================================
+var aweberForm = window.document.querySelector('#aweberForm');
 
 aweberForm.addEventListener('submit', (e)=>{
+    
     e.preventDefault();
     
-    //get form Data
-    var formData = new FormData(aweberForm);
-    sendDataToIframeForm(formData);
-    iframeForm.submit();
+
     closeModal();
     showAweberSuccess(); // show info msg when subscribed
+    console.log(aweberForm);
+    setTimeout(()=>{aweberForm.submit();},3000);
+    
+//    aweberForm.submit();
     
 })
 
@@ -111,19 +114,24 @@ aweberForm.addEventListener('submit', (e)=>{
 const myIframe = document.getElementById('iframeAweber');
 var iframeForm = null;
 // get iframe form onload 
-function access(){
-    const iframeDocument = myIframe.contentDocument;
-    //console.log(iframeDocument);
-    try{
-        iframeForm = iframeDocument.querySelector("#aweberIframeForm"); 
-//        console.log(iframeForm);
-    }catch(error){console.error(error);}
-}
+//function access(){
+//    const iframeDocument = myIframe.contentDocument;
+//    //console.log(iframeDocument);
+//    try{
+//        iframeForm = iframeDocument.querySelector("#aweberIframeForm"); 
+////        console.log(iframeForm);
+//    }catch(error){console.error(error);}
+//}
 //
 function sendDataToIframeForm(formData){
     iframeForm.elements['email'].value = formData.get('email');
+//    iframeForm.elements['redirect'].value = formData.get('redirect'); //"http://127.0.0.1:13920/aweberform.html";
+    console.log(iframeForm.elements['redirect'].value);
+    for (var pair of formData.entries()){
+        console.log(pair[0]+ ', '+ pair[1]);
+    }
 }
-
+// ==============END Section for Submit Event===============!!!!!!!!!!!!!!!
 
 //================Functions to close/open Success Info
 aweberSuccess = $('#aweberSuccess')
