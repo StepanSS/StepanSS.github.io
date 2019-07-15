@@ -30,33 +30,32 @@ var modalState = true; //trigger to open modal one time only
 $(document).mouseleave(openModal);
 
 // Function to open modal
-function openModal() { 
+function openModal() {
     if(modalState && exitState && !modalStateInCookie){
         modal.style.display = 'flex';
-        modalState = false;        
+        modalState = false;
         setCookie("modalCookieState", "y", exdays)
-        
-    }    
+
+    }
 }
 
 // Function to close modal
 function closeModal(){
     modal.style.display = 'none';
 //    showAweberSuccess();//for testing only - after need to comment
-    
 }
 
 // Function to close modal if outside click
 function clickOutside(e){
   if(e.target==modal) {
       modal.style.display='none';
-  } 
+  }
 }
 
 // Popup for mobile devices
-$( document ).ready(function() {      
+$( document ).ready(function() {
     var isMobile = window.matchMedia("only screen and (max-width: 770px)").matches;
-    
+
     if(isMobile){
        window.history.pushState({page: 1}, "", "");
 
@@ -64,7 +63,7 @@ $( document ).ready(function() {
 
           // "event" object seems to contain value only when the back button is clicked
           // and if the pop state event fires due to clicks on a button
-          // or a link it comes up as "undefined" 
+          // or a link it comes up as "undefined"
 
           if(event){
               // Code to handle back button or prevent from navigation
@@ -76,7 +75,7 @@ $( document ).ready(function() {
           else{
             // Continue user action through link or button
           }
-        } 
+        }
     }
 //    //Switch Popup with delay
 //    if (isMobile) {
@@ -90,65 +89,7 @@ $( document ).ready(function() {
 //    }
  });
 
-
-//========================Section for Submit Event============!!!!!!!!!!!!
-//to return normal form behavior comment this section
-//===============================================
-var aweberForm = window.document.querySelector('#aweberForm');
-
-aweberForm.addEventListener('submit', (e)=>{
-    
-    e.preventDefault();
-    
-
-    closeModal();
-    showAweberSuccess(); // show info msg when subscribed
-    console.log(aweberForm);
-    setTimeout(()=>{aweberForm.submit();},1000);
-    
-//    aweberForm.submit();
-    
-})
-
-//get Iframe window
-const myIframe = document.getElementById('iframeAweber');
-var iframeForm = null;
-// get iframe form onload 
-//function access(){
-//    const iframeDocument = myIframe.contentDocument;
-//    //console.log(iframeDocument);
-//    try{
-//        iframeForm = iframeDocument.querySelector("#aweberIframeForm"); 
-////        console.log(iframeForm);
-//    }catch(error){console.error(error);}
-//}
-//
-function sendDataToIframeForm(formData){
-    iframeForm.elements['email'].value = formData.get('email');
-//    iframeForm.elements['redirect'].value = formData.get('redirect'); //"http://127.0.0.1:13920/aweberform.html";
-    console.log(iframeForm.elements['redirect'].value);
-    for (var pair of formData.entries()){
-        console.log(pair[0]+ ', '+ pair[1]);
-    }
-}
-// ==============END Section for Submit Event===============!!!!!!!!!!!!!!!
-
-//================Functions to close/open Success Info
-aweberSuccess = $('#aweberSuccess')
-//console.log(aweberSuccess);
-function showAweberSuccess(){
-    aweberSuccess.attr("style", "display: block");
-    setTimeout(()=>{
-        aweberSuccess.attr("style", "display: none")
-        }, 5000); //show for 5 sec
-}
-function closeAweberSuccess(){
-    aweberSuccess.attr("style", "display: none") ;
-}
-$('#closeBtnAweberSuccess').on('click', closeAweberSuccess)
-
-
-// ======================= Cookie Section
+// ======================= Cookie Section==================!!!!!!!!!!!
 modalStateInCookie = getCookie("modalCookieState");
 console.log(modalStateInCookie);
 
@@ -177,16 +118,45 @@ function getCookie(cname) {
 }
 
 
+//========================Section for Submit Event============!!!!!!!!!!!!
+//Note: to return normal form behavior comment this section
+//===============================================
+var aweberForm = window.document.querySelector('#aweberForm');
 
+aweberForm.addEventListener('submit', (e)=>{
+    e.preventDefault();
 
+    closeModal();
+//    showAweberSuccess(); // show info msg when subscribed
+//    console.log(aweberForm);
+//    setTimeout(()=>{aweberForm.submit();},1000);
+    aweberForm.submit();
+    setCookie("formSubmitted", "y", exdays);
 
+})
+// ==============END Section for Submit Event===============!!!!!!!!!!!!!!!
 
+//================Functions to close/open Success Info
+aweberSuccess = $('#aweberSuccess')
+//console.log(aweberSuccess);
+// When Document Loaded show Success if user just subscribed
+document.addEventListener('DOMContentLoaded', function() {
+   // if user just subscribed
+    var formSubmitState = getCookie('formSubmitted');
+    if(formSubmitState == "y"){
+        setCookie("formSubmitted", 0, 0); // remove cookies
+        // showAweberSuccess for 5 sac
+        showAweberSuccess();
+    }
+}, false);
 
-
-
-
-
-
-
-
-
+function showAweberSuccess(){
+    aweberSuccess.attr("style", "display: block");
+    setTimeout(()=>{
+        aweberSuccess.attr("style", "display: none")
+        }, 5000); //show for 5 sec
+}
+function closeAweberSuccess(){
+    aweberSuccess.attr("style", "display: none") ;
+}
+$('#closeBtnAweberSuccess').on('click', closeAweberSuccess)

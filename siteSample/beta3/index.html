@@ -16,7 +16,7 @@
 	<link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
 	<link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
 	<link rel="stylesheet" type="text/css" href="css/stylesheet4.css">
-   
+
     <!-- Bootstrap CSS-->
     <link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap.min.css">
     <!-- Modal CSS-->
@@ -32,18 +32,18 @@
               Success!
           </strong> Your sign up was successful.
     </div><!--END Section for "Your sign up was successful"-->
-    
+
     <!-- Iframe Section    -->
     <div class="iframeWrapper" style="display: none" >
         <iframe src="./aweberform.html" frameborder="0" id="iframeAweber"></iframe>
     </div>
     <!-- END Iframe Section    -->
-    
+
     <!-- Everything Exit POP -->
     <!--Exit intent popup section(Modal section)-->
-   
+
    <div class="bg-modal" id="popModal" style="display: none;">
-       
+
         <div class="modal-content">
             <div class="closeBtn" id="closeModalBtn">
                 <p>×</p>
@@ -62,7 +62,7 @@
                     </div>
                     <div class="col-md-6">
                        <p>
-                          Sign up below to grab my FREE infographic on 13 Explosive Female Orgasms. 
+                          Sign up below to grab my FREE infographic on 13 Explosive Female Orgasms.
                        </p>
                         <img class='body-img arrow' src="images/opt_arrow2.png" >
                     </div>
@@ -70,21 +70,33 @@
                 <!--OPTIN FORM AWEBER-->
                 <form id="aweberForm" action="https://www.aweber.com/scripts/addlead.pl" method="post" accept-charset="UTF-8">
                 <div class="row">
-                    
+
                     <div class="col-md-6 email-and-button">
                         <div class="text-box">
-                           
+
                             <!-- Extra DATA-->
-                           <input type="hidden" name="meta_web_form_id" value="1762873795" />
+                           <!-- <input type="hidden" name="meta_web_form_id" value="1762873795" />
                             <input type="hidden" name="meta_split_id" value="" />
                             <input type="hidden" name="listname" value="awlist5360790" />
                             <input type="hidden" name="redirect" value="" />
                             <input type="hidden" name="meta_adtracking" value="" />
                             <input type="hidden" name="meta_message" value="1" />
                             <input type="hidden" name="meta_required" value="email" />
-                            <input type="hidden" name="meta_tooltip" value="" />
+                            <input type="hidden" name="meta_tooltip" value="" /> -->
                            <!-- END Extra DATA-->
                            
+				            <!-- Extra data StepansAccount -->
+                             <input type="hidden" name="meta_web_form_id" value="679023018" />
+                             <input type="hidden" name="meta_split_id" value="" />
+                             <input type="hidden" name="listname" value="awlist5381065" />
+                             <input type="hidden" name="redirect" value="https://www.aweber.com/form/thankyou_vo.html" id="redirect_d2c9e49a254ef8c79cc133324499d723" />
+                             <input type="hidden" name="meta_adtracking" value="WebForm_1" />
+                             <input type="hidden" name="meta_message" value="1" />
+                             <input type="hidden" name="meta_required" value="email" />
+                             <input type="hidden" name="meta_forward_vars" value="1" />
+                             <input type="hidden" name="meta_tooltip" value="" />
+				            <!-- END Extra DATA StepansAccount-->
+
                             <input type="email" class='form-control'  required="required" name="email" placeholder="Your Email" value="Your Email Address" onblur="if (this.value == '') {this.value = 'Your Email Address';}" onfocus="if (this.value == 'Your Email Address') {this.value = '';}">
                         </div>
                     </div>
@@ -93,7 +105,7 @@
                             <span><strong>Subscribe and Download</strong></span>
                         </button>
                     </div>
-                    
+
                 </div>
                 </form>
                 <!--END OPTIN FORM AWEBER-->
@@ -231,6 +243,10 @@
 
 <!-- User Settings JS-->
     <script src="js/userSettings-index.js"></script>
-    
+
     <script src="js/popup.js"></script>
-</body></html>
+    <script>
+        document.getElementById('redirect_d2c9e49a254ef8c79cc133324499d723').setAttribute('value', document.location);
+    </script>
+</body>
+</html>
