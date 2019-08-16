@@ -114,6 +114,7 @@ img {
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
 }
 
+<<<<<<< HEAD
 .box {
   background: var(--primary);
   text-align: center;
@@ -138,6 +139,10 @@ img {
 .portfolio img {
   width: 100%;
   box-shadow: var(--shadow);
+=======
+section#service {
+  background: url('https://source.unsplash.com/V254cfGimZs/1600x900') no-repeat center center/cover;;
+>>>>>>> 072570d5aeed7fbf735ba973b0828ba83cc511b5
 }
 
 /* Footer */
