@@ -1,3 +1,2 @@
 # StepanSS.github.io
-Landing Page With Smooth Scroll on GitHub 
-
+Landing Page With Grid Layout 
