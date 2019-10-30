@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 3000" width="1920" height="3000">
+	<style>
+		tspan { white-space:pre }
+		.shp0 { fill: #000000 } 
+	</style>
+	<path id="Foreground copy" class="shp0" d="M-1 0L1920 0L1920 867L-1 867L-1 0ZM0 867L960 867L960 991L0 867ZM1920 867L960 867L960 991L1920 867Z" />
+</svg>
